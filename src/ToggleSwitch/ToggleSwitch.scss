@@ -1,104 +1,38 @@
-.toggle-container {
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.5rem;
+.btn-theme-control {
+    position: relative;
+    color: #fff;
+    background-color: #151619;
+    border: none;
+    outline: none;
+    padding: 1.8rem 5.5rem;
+    border-radius: 10px;
 }
 
-.toggle-switch {
-    position: relative;
-    width: 75px;
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    text-align: left;
+.theme-img {
+    transform: scale(1.5);
+}
 
-    &-checkbox {
-        display: none;
-    }
+.check {
+    position: absolute;
+    top: 50%;
+    margin-top: -9px;
+    left: 15px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #151619;
+    box-shadow: #fff;
+    transition: transform .25s;
+}
 
-    &-label {
-        display: block;
-        overflow: hidden;
-        cursor: pointer;
-        border: 0 solid #bbb;
-        border-radius: 20px;
-        margin: 0;
-    }
+.hide-theme-img {
+    display: none;
+}
 
-    &-inner {
-        display: block;
-        width: 200%;
-        margin-left: -100%;
-        transition: margin 0.3s ease-in 0s;
 
-        &:before,
-        &:after {
-            display: block;
-            float: left;
-            width: 50%;
-            height: 34px;
-            padding: 0;
-            line-height: 34px;
-            font-size: 14px;
-            color: white;
-            font-weight: bold;
-            box-sizing: border-box;
-        }
 
-        &:before {
-            content: attr(data-yes); //"Yes";       
-            text-transform: uppercase;
-            padding-left: 10px;
-            background-color: #f90;
-            color: #fff;
-        }
-    }
-
-    &-disabled {
-        background-color: #ddd;
-        cursor: not-allowed;
-
-        &:before {
-            background-color: #ddd;
-            cursor: not-allowed;
-        }
-    }
-
-    &-inner:after {
-        content: attr(data-no); //"No";
-        text-transform: uppercase;
-        padding-right: 10px;
-        background-color: #bbb;
-        color: #fff;
-        text-align: right;
-    }
-
-    &-switch {
-        display: block;
-        width: 24px;
-        margin: 5px;
-        background: #fff;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 40px;
-        border: 0 solid #bbb;
-        border-radius: 20px;
-        transition: all 0.3s ease-in 0s;
-    }
-
-    &-checkbox:checked+&-label {
-        .toggle-switch-inner {
-            margin-left: 0;
-        }
-
-        .toggle-switch-switch {
-            right: 0px;
-        }
+.light-mode {
+    .check {
+        transform: translate(125px);
     }
 }

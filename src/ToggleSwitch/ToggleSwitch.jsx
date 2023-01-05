@@ -1,35 +1,44 @@
 import React, { useState } from "react";
 import "./ToggleSwitch.scss";
-import Light from "../assets/icon-light-mode.svg";
-import Dark from "../assets/icon-dark-mode.svg";
+import LightMode from "../assets/icon-light-mode.svg";
+import DarkMode from "../assets/icon-dark-mode.svg";
 
-function ToggleSwitch() {
-  const [checked, setChecked] = useState(false);
-  const handleChecked = (evt) => {
-    setChecked(evt.target.checked);
-    console.log(evt);
-    console.log(checked);
+function ThemeControl() {
+  const [theme, setTheme] = useState(false);
+
+  const onChange = () => {
+    setTheme(!theme);
   };
+
   return (
-    <div className="toggle-container">
-      <img src={Dark} alt="" />
-      <div className="toggle-switch">
-        <input
-          type="checkbox"
-          className="toggle-switch-checkbox"
-          name="toggleSwitch"
-          id="toggleSwitch"
-          onChange={handleChecked}
-          checked={checked}
-        />
-        <label className="toggle-switch-label" htmlFor="toggleSwitch">
-          <span className="toggle-switch-inner" data-yes="Yes" data-no="No" />
-          <span className="toggle-switch-switch" />
-        </label>
-      </div>
-      <img src={Light} alt="" />
+    <div className={`${theme ? "light-mode" : ""}`}>
+      <button
+        type="button"
+        role="switch"
+        className="btn btn-theme-control"
+        aria-checked={theme}
+        aria-label="toggle dark mode"
+        onClick={onChange}
+      >
+        <span className="check">
+          <span className="theme-icons">
+            <img
+              className={`theme-img light-theme-img ${theme ? "hide-theme-img" : ""}`}
+              src={DarkMode}
+              aria-hidden
+              alt=""
+            />
+            <img
+              className={`theme-img dark-theme-img ${theme ? "" : "hide-theme-img"}`}
+              src={LightMode}
+              aria-hidden
+              alt=""
+            />
+          </span>
+        </span>
+      </button>
     </div>
   );
 }
 
-export default ToggleSwitch;
+export default ThemeControl;
